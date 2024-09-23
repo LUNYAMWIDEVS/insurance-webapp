@@ -1,0 +1,62 @@
+name: Brooks Insurance Web App
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - "*"
+
+
+jobs:
+  # run-tests:
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       node-version: [14.x]
+
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: Use Node.js ${{ matrix.node-version }}
+  #     uses: actions/setup-node@v1
+  #     with:
+  #       node-version: ${{ matrix.node-version }}
+  #   - uses: actions/cache@v2
+  #     with:
+  #       path: ~/.npm
+  #       key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+  #       restore-keys: |
+  #         ${{ runner.os }}-node-
+  #   - run: npm install
+  #   - run: npm run build
+  #     env:
+  #       CI: false
+  #   - run: npm run test
+  #     env:
+  #       CI: false
+
+
+  build-and-deploy:
+    name: Deploy App
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/develop'
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Executing remote  command
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: |
+          cd /srv/www/html/brooks-insurance-front-end/
+          git fetch
+          git reset --hard origin/main
+          npm install
+          docker-compose build
+          docker-compose up -d
+    # needs: [run-tests]

@@ -1,0 +1,83 @@
+.centered-content {
+    display: flex;
+    justify-content: center;
+}
+
+.paddingBottom {
+    padding-bottom: 4vh;
+}
+
+.center {
+    text-align: center;
+}
+
+.clear-top {
+    margin-top: 3vh;
+}
+
+.float-left {
+    text-align: left;
+    justify-content: flex-start;
+}
+
+.visible {
+display: block;
+}
+
+.clear {
+    color: #fff;
+}
+
+.clear-text-top {
+    padding-top: 1.5vh !important;
+    padding-left: 1vw !important;
+}
+
+.app-container {
+    width: 100%;
+    margin: auto;
+    margin-top: 5vh;
+}
+
+.content-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 2.5%;
+}
+
+.clear-left {
+    float: right;
+    margin-left: 30%;
+}
+
+.dropzone {
+    background: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    padding: 20px;
+    cursor: pointer;
+    height: 150px;
+    width: 400px;
+    border: 2px dashed #4ec7f4;
+    outline: none;
+  }
+  
+  .dropzoneReject {
+    border: 2px dashed red;
+  }
+  .dropzoneAccept {
+    border: 2px dashed green;
+  }
+
+.reportDownload {
+    border: 1px solid #2385cf;
+    color: #2385cf;
+    background-color: #fff;
+    border-radius: 4px;
+    font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    min-height: 1em;
+    font-weight: 700;
+    font-size: 1rem;
+}
