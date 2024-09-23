@@ -49,10 +49,10 @@ class ClientValidations:
         check_email_validity(
             input_data['email']) if input_data['email'] else ""
         self.validate_gender(input_data['gender'])
-        self.validate_item_regex(input_data['kra_pin'], "(\d+[A-Z])|([A-Z]+\d)[\dA-Z]*",
-                                 error_dict['invalid_input'].format("KRA PIN"))
-        self.validate_item_regex(str(input_data['id_number']), "^([\s\d]+)$",
-                                 error_dict['invalid_input'].format("ID number"))
+        # self.validate_item_regex(input_data['kra_pin'], "(\d+[A-Z])|([A-Z]+\d)[\dA-Z]*",
+        #                          error_dict['invalid_input'].format("KRA PIN"))
+        # self.validate_item_regex(str(input_data['id_number']), "^([\s\d]+)$",
+        #                          error_dict['invalid_input'].format("ID number"))
         self.validate_names_length([input_data['first_name'], input_data['last_name']])
         input_data['email'] = self.validate_email_already_exist(
             input_data['email'],
@@ -137,13 +137,13 @@ class ClientValidations:
                                                         client_id, user.agency,
                                                         CorporateClient)
 
-        if data_.get('kra_pin', ''):
-            self.validate_item_regex(
-                data_.get('kra_pin', ''), "(\d+[A-Z])|([A-Z]+\d)[\dA-Z]*",
-                error_dict['invalid_input'].format("KRA PIN"))
-        elif data_.get('id_number', ''):
-            self.validate_item_regex(str(data_.get('id_number', '')), "^([\s\d]+)$",
-                                     error_dict['invalid_input'].format("ID number"))
+        # if data_.get('kra_pin', ''):
+        #     self.validate_item_regex(
+        #         data_.get('kra_pin', ''), "(\d+[A-Z])|([A-Z]+\d)[\dA-Z]*",
+        #         error_dict['invalid_input'].format("KRA PIN"))
+        # elif data_.get('id_number', ''):
+        #     self.validate_item_regex(str(data_.get('id_number', '')), "^([\s\d]+)$",
+        #                              error_dict['invalid_input'].format("ID number"))
         if data_.get('contact_persons') is None:
             data_['contact_persons'] = []
         _ = [validate_object_id(
@@ -172,15 +172,15 @@ class ClientValidations:
                                                         client_id, user.agency,
                                                         IndividualClient)
 
-        if data_.get('gender', ''):
-            self.validate_gender(data_.get('gender', ''))
-        elif data_.get('kra_pin', ''):
-            self.validate_item_regex(
-                data_.get('kra_pin', ''), "(\d+[A-Z])|([A-Z]+\d)[\dA-Z]*",
-                error_dict['invalid_input'].format("KRA PIN"))
-        elif data_.get('id_number', ''):
-            self.validate_item_regex(str(data_.get('id_number', '')), "^([\s\d]+)$",
-                                     error_dict['invalid_input'].format("ID number"))
+        # if data_.get('gender', ''):
+        #     self.validate_gender(data_.get('gender', ''))
+        # elif data_.get('kra_pin', ''):
+        #     self.validate_item_regex(
+        #         data_.get('kra_pin', ''), "(\d+[A-Z])|([A-Z]+\d)[\dA-Z]*",
+        #         error_dict['invalid_input'].format("KRA PIN"))
+        # elif data_.get('id_number', ''):
+        #     self.validate_item_regex(str(data_.get('id_number', '')), "^([\s\d]+)$",
+        #                              error_dict['invalid_input'].format("ID number"))
 
         if data_.get('contact_persons') is None:
             data_['contact_persons'] = []
